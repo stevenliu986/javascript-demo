@@ -20,5 +20,4 @@ const str = "12.5px";
 console.log(parseInt(str)); // 12
 console.log(parseFloat(str)); // 12.5
 console.log(parseFloat("width: 12px")); // NaN
-console.log(Number());
-console.log(Number());
+console.log([].toString()); // ''
