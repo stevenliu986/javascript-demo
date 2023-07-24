@@ -2,7 +2,8 @@ let a = 12;
 console.log(a.toString()); // '12'
 console.log(NaN.toString()); // 'NaN'
 
-let b = 10 + null + true + [] + undefined + "hello" + null + [] + 10 + false;
+let b =
+  10 + null + true + {} + [] + undefined + "hello" + null + [] + 10 + false;
 /* 
  1. 10 + null (这一步为数学运算) = 10 + Number(null) = 10 + 0 = 10
  2. 10 + true (这一步为数学运算) = 10 + Number(true) = 10 + 1 = 11
