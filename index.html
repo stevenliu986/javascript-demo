@@ -5,10 +5,38 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>JS基础语法学习</title>
+  <style>
+    .box {
+      margin: 20px auto;
+      width: 500px;
+      height: 200px;
+    }
+
+    .box span {
+      border: 1px solid #ccc;
+      padding: 20px;
+      cursor: pointer;
+    }
+  </style>
 </head>
 
 <body>
-  <script src="js/03.js"></script>
+  <div class="box">
+    <span>点击</span>
+    <div class="detail" style="display: none">
+      详情
+    </div>
+  </div>
+  <script>
+    let box = document.querySelector(".box");
+    let detail = document.querySelector(".detail");
+    box.onclick = function () {
+      let detailStyle = detail.style.display;
+      if (detailStyle === "none") {
+        detail.style.display = "block";
+      } else detail.style.display = "none";
+    }
+  </script>
 </body>
 
 </html>
