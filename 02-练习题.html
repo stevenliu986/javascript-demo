@@ -69,7 +69,7 @@
 
 <body>
   <div class="box">
-    <ul>
+    <ul class="ulBox">
       <li>Hello World!</li>
       <li>Hello Java!</li>
       <li>Hello SpringBoot!</li>
@@ -95,6 +95,8 @@
     var tagList = tagBox.getElementsByTagName('div');
     var navBox = document.querySelector('.navBox');
     var navList = navBox.getElementsByTagName('li');
+
+    // 使用var定义循环有坑：
     for (var i = 0; i < tagList.length; i++) {
       navList[i].myIndex = i;
       navList[i].onclick = function () { changeTag(this.myIndex); }
@@ -107,6 +109,11 @@
        })(i);
      } */
 
+    /* // 使用let解决方案
+    for (let i = 0; i < tagList.length; i++) {
+      navList[i].onclick = function () { changeTag(i); }
+    } */
+
     function changeTag(clickIndex) {
       for (let i = 0; i < navList.length; i++) {
         navList[i].className = '';
@@ -116,8 +123,17 @@
       tagList[clickIndex].className = 'active';
     }
 
+    let ulBox = document.querySelector('.ulBox');
+    let liList = ulBox.getElementsByTagName('li');
 
-
+    for (let i = 0; i < liList.length; i++) {
+      liList[i].onmouseover = function () {
+        this.style.backgroundColor = "lightcoral";
+      };
+      liList[i].onmouseout = function () {
+        this.style.backgroundColor = i % 2 === 0 ? '#aaf0f4' : '#ddd';
+      };
+    }
   </script>
 </body>
 
