@@ -11,13 +11,14 @@
       padding: 0;
     }
 
-    .box {
+    .box,
+    .tagBox {
       width: 500px;
       margin: 50px auto;
       border: 1px solid #ccc;
     }
 
-    .box ul {
+    ul {
       list-style: none;
     }
 
@@ -27,6 +28,41 @@
 
     .box li:nth-child(even) {
       background-color: #aaf0f4;
+    }
+
+    .box li:nth-child(odd) {
+      background-color: #ddd;
+    }
+
+    .tagBox ul {
+      display: flex;
+    }
+
+    .tagBox li {
+      border: 1px solid lightblue;
+      margin-right: 10px;
+      padding: 5px 10px;
+    }
+
+    .tagBox>div {
+      box-sizing: border-box;
+      padding: 10px;
+      height: 100px;
+      border: 1px solid #999;
+      display: none;
+    }
+
+    .tagBox>div.active {
+      display: block;
+    }
+
+    .tagBox>.navBox {
+      position: relative;
+      top: 1px;
+    }
+
+    .navBox li.active {
+      border-bottom-color: #fff;
     }
   </style>
 </head>
@@ -43,6 +79,46 @@
       <li>Hello TypeScript!</li>
     </ul>
   </div>
+  <div class="tagBox">
+    <ul class="navBox">
+      <li class="active">编程</li>
+      <li>读书</li>
+      <li>运动</li>
+    </ul>
+    <div class="active">编程使我快乐</div>
+    <div>读书使我愉悦</div>
+    <div>运动使我健康</div>
+  </div>
+
+  <script>
+    var tagBox = document.querySelector('.tagBox');
+    var tagList = tagBox.getElementsByTagName('div');
+    var navBox = document.querySelector('.navBox');
+    var navList = navBox.getElementsByTagName('li');
+    for (var i = 0; i < tagList.length; i++) {
+      navList[i].myIndex = i;
+      navList[i].onclick = function () { changeTag(this.myIndex); }
+    }
+
+    /*  // 闭包方式实现tab切换
+     for (var i = 0; i < navList.length; i++) {
+       navList[i].onclick = (function (i) {
+         return function () { changeTag(i) }
+       })(i);
+     } */
+
+    function changeTag(clickIndex) {
+      for (let i = 0; i < navList.length; i++) {
+        navList[i].className = '';
+        tagList[i].className = '';
+      }
+      navList[clickIndex].className = 'active';
+      tagList[clickIndex].className = 'active';
+    }
+
+
+
+  </script>
 </body>
 
 </html>
