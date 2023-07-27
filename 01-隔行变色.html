@@ -57,13 +57,27 @@
   <script>
     let newsBox = document.getElementById("newsBox");
     let newsList = newsBox.getElementsByTagName('li');
-    for (let i = 0; i < newsList.length; i++) {
+    /* for (let i = 0; i < newsList.length; i++) {
       let curLi = newsList[i];
       curLi.style.backgroundColor = (i % 2 === 0) ? '#fff' : '#ddd';
       curLi.onmouseover = function () {
         this.style.backgroundColor = 'green';
       };
       curLi.onmouseout = function () { this.style.backgroundColor = (i % 2 === 0) ? '#fff' : '#ddd' };
+    } */
+
+    // 使用自定义属性实现隔行变色
+    for (let i = 0; i < newsList.length; i++) {
+      let bg = (i % 2 === 0) ? '#fff' : '#ddd';
+      newsList[i].style.backgroundColor = bg;
+      // 设置自定义属性
+      newsList[i].myOriginBg = bg;
+      newsList[i].onmouseover = function () {
+        this.style.backgroundColor = 'lightcoral';
+      }
+      newsList[i].onmouseout = function () {
+        this.style.backgroundColor = this.myOriginBg;
+      }
     }
   </script>
 </body>
