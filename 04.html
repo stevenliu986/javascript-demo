@@ -4,19 +4,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>按钮</title>
 </head>
 
 <body>
-  <button value="按键1">按键1</button><button value="按键2">按键1</button><button value="按键3">按键1</button><button
-    value="按键4">按键1</button><button value="按键5">按键1</button>
+  <button value="按钮1">按钮1</button>
+  <button value="按钮2">按钮2</button>
+  <button value="按钮3">按钮3</button>
+  <button value="按钮4">按钮4</button>
+  <button value="按钮5">按钮5</button>
   <script>
     let btnList = document.getElementsByTagName('button');
-    // for (let i = 0; i < btnList.length; i) {
-    //   btnList[i].onclick = function () {
-    //     alert(i);
-    //   }
-    // }
+    for (let i = 0; i < btnList.length; i++) {
+      btnList[i].onclick = function () {
+        alert(i + 1);
+      }
+    }
   </script>
 </body>
 
