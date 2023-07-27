@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>变色</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    html,
+    body {
+      height: 100%;
+      overflow: hidden;
+    }
+
+    .changeBtn {
+      margin: 20px 50px;
+      padding: 5px 20px;
+    }
+  </style>
+</head>
+
+<body style="background-color: white">
+  <button class="changeBtn">点我变色...</button>
+  <script>
+    let body = document.body;
+    let changeBtn = document.querySelector('.changeBtn');
+    changeBtn.onclick = function () {
+      // 使用 元素.style.xxx只能获取行内样式（颜色在样式中如果使用16进制方式，JS中获取到的是rgb的值）
+      let bg = body.style.backgroundColor;
+      switch (bg) {
+        case 'white':
+          body.style.backgroundColor = 'red';
+          break;
+        case 'red':
+          body.style.backgroundColor = 'green';
+          break;
+        case 'green':
+          body.style.backgroundColor = 'blue';
+          break;
+        case 'blue':
+          body.style.backgroundColor = 'black';
+          break;
+        case 'black':
+          body.style.backgroundColor = 'white';
+          break;
+        default:
+          body.style.backgroundColor = 'white';
+      }
+    }
+  </script>
+</body>
+
+</html>
