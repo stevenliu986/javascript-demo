@@ -24,12 +24,19 @@
   </style>
 </head>
 
-<body style="background-color: white">
+<body>
   <button class="changeBtn">点我变色...</button>
   <script>
     let body = document.body;
     let changeBtn = document.querySelector('.changeBtn');
+    let arr = ['white', 'red', 'green', 'blue', 'black', 'orange', 'rgb(194, 109, 109)', '#888'];
+    let i = 0;
     changeBtn.onclick = function () {
+      i++;
+      i > arr.length - 1 ? i = 0 : null;
+      body.style.backgroundColor = arr[i];
+    }
+    /* changeBtn.onclick = function () {
       // 使用 元素.style.xxx只能获取行内样式（颜色在样式中如果使用16进制方式，JS中获取到的是rgb的值）
       let bg = body.style.backgroundColor;
       switch (bg) {
@@ -48,7 +55,7 @@
         default:
           body.style.backgroundColor = 'white';
       }
-    }
+    } */
   </script>
 </body>
 
