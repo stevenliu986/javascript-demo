@@ -34,7 +34,14 @@ console.log("使用set方法的结果：" + newArr);
 let newObj = {};
 for (let i = 0; i < arr.length; i++) {
   if (newObj[arr[i]] !== undefined) {
-    arr.splice(i, 1);
+    // splice方案比较消耗性能，如果后面有大量的数据，所有的数据都要向前挪一位，比较消耗性能
+    // arr.splice(i, 1);
+    // i--;
+    // continue;
+
+    // 方案优化
+    arr[i] = arr[arr.length - 1];
+    arr.length--;
     i--;
     continue;
   }
