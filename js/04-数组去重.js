@@ -22,7 +22,6 @@ for (let i = 0; i < arr.length; i++) {
       j--;
     }
   }
-  return arr;
 }
 
 console.log(arr);
@@ -41,4 +40,6 @@ for (let i = 0; i < arr.length; i++) {
   }
   newObj[arr[i]] = arr[i];
 }
+
+console.log(arr);
 console.log(newObj); // {1：1， 2：2， 3：3}
