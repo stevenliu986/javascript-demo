@@ -26,3 +26,19 @@ for (let i = 0; i < arr.length; i++) {
 }
 
 console.log(arr);
+
+newArr = [...new Set(arr)];
+console.log("------------------------------");
+console.log("使用set方法的结果：" + newArr);
+
+/* 方案三：基于对象的方式来去重 */
+let newObj = {};
+for (let i = 0; i < arr.length; i++) {
+  if (newObj[arr[i]] !== undefined) {
+    arr.splice(i, 1);
+    i--;
+    continue;
+  }
+  newObj[arr[i]] = arr[i];
+}
+console.log(newObj); // {1：1， 2：2， 3：3}
