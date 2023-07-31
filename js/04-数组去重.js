@@ -5,11 +5,11 @@
 let arr = [1, 2, 3, 1, 2, 1, 2, 2, 1, 1, 2, 3, 2, 1];
 
 let newArr = [];
-for (let i = 0; i < arr.length; i++) {
-  let item = arr[i];
+arr.forEach((item) => {
   if (newArr.includes(item)) {
-    continue;
+    return;
   }
   newArr.push(item);
-}
+});
+
 console.log(newArr);
