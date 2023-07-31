@@ -57,3 +57,64 @@ let year = time.substring(0, n);
 let month = time.substring(n + 1, m);
 let date = time.substring(m + 1, x);
 console.log(year, month, date); */
+
+// 2. 实现一个方法：queryURLParameter，获取一个URL地址问题后面传递的参数信息
+/* 
+  结果：{
+    lx:1,
+    name: "hello",
+    teacher: "world",
+    HASH: "box"
+  }
+ */
+let url = "http://www.example.com/index.html?lx=1&name=hello&teacher=world#box";
+// 1. 获取？和#号后面的值
+/* 
+  let askIndex = url.indexOf("?"),
+    sharpIndex = url.indexOf("#");
+
+  let askString = url.substring(askIndex + 1, sharpIndex);
+  let sharpString = url.substring(sharpIndex + 1);
+  // 2. 问号后面值的处理
+  let askArr = askString.split("&");
+  let askObj = {};
+  askArr.forEach((item) => {
+    let tempArr = item.split("=");
+    askObj[tempArr[0]] = tempArr[1];
+  });
+  askObj.HASH = sharpString; 
+*/
+
+/* const queryURLParams = (url) => {
+  // 1. 获取?和#后面的信息
+  let askIndex = url.indexOf("?"),
+    // 判断是否有#号存在
+    sharpIndex = url.indexOf("#"),
+    askString = "",
+    sharpString = "";
+  sharpIndex === -1 ? (sharpIndex = url.length) : null;
+  askIndex >= 0 ? (askString = url.substring(askIndex + 1, sharpIndex)) : null;
+  sharpString = url.substring(sharpIndex + 1);
+
+  // 2. 获取每一部分的信息
+  let urlObj = {};
+  sharpString !== "" ? (urlObj["HASH"] = sharpString) : null;
+  if (askString !== "") {
+    let askStringArr = askString.split("&");
+    askStringArr.forEach((element) => {
+      let askArr = element.split("=");
+      urlObj[askArr[0]] = askArr[1];
+    });
+  }
+  return urlObj;
+}; */
+
+// 使用正则表达式来修改上面的函数
+const queryURLParams = (url) => {
+  let result = {},
+    regOne = /([^?=&#]+)=([^?=&#]+)/g,
+    regTwo = /#([^?=&#]+)/g;
+  url.replace(regOne, (n, x, y) => (result[x] = y));
+  url.replace(regTwo, (n, x) => (result["HASH"] = x));
+  return result;
+};
