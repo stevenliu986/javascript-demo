@@ -19,6 +19,7 @@ for (let i = 0; i < arr.length; i++) {
   for (let j = i + 1; j < arr.length; j++) {
     if (arr[i] === arr[j]) {
       arr.splice(j, 1);
+      // 人为将索引更改来避免数组塌陷问题，就是将索引后退一位
       j--;
     }
   }
