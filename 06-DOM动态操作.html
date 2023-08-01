@@ -12,20 +12,49 @@
       line-height: 200px;
       text-align: center;
     }
+
+    .check {
+      color: #fff;
+      width: 100px;
+      height: 100px;
+      margin-top: 10px;
+      background-color: #a00faf;
+    }
   </style>
   <title>DOM动态操作</title>
 </head>
 
 <body>
+  <div class="check">车车卡</div>
   <script>
     let box = document.createElement('div');
     box.id = 'boxActive';
     box.style.width = '200px';
     box.style.height = '200px';
     box.className = 'RED';
+
+    // 动态创建一个文本
     let text = document.createTextNode("Hello World");
+
+    // 添加：容器.appendChild(元素)
     box.appendChild(text);
     document.body.appendChild(box);
+
+    // 放到指定元素前：容器.insertBefore(新增元素, 指定元素);
+    let check = document.querySelector(".check");
+    document.body.insertBefore(box, check);
+
+    // 节点克隆
+    let check1 = check.cloneNode(true);
+    let check2 = check.cloneNode(false);
+    document.body.appendChild(check1);
+    document.body.appendChild(check2);
+
+    check1.innerHTML = "<span>查查看1</span>";
+    check2.innerHTML = "<span>查查看2</span>";
+
+    // 移除某个元素：容器.removeChild(元素)
+    document.body.removeChild(check1);
   </script>
 </body>
 
