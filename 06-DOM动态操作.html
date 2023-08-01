@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    .RED {
+      color: red;
+      background-color: lightblue;
+      font-size: 24px;
+      line-height: 200px;
+      text-align: center;
+    }
+  </style>
+  <title>DOM动态操作</title>
+</head>
+
+<body>
+  <script>
+    let box = document.createElement('div');
+    box.id = 'boxActive';
+    box.style.width = '200px';
+    box.style.height = '200px';
+    box.className = 'RED';
+    let text = document.createTextNode("Hello World");
+    box.appendChild(text);
+    document.body.appendChild(box);
+  </script>
+</body>
+
+</html>
