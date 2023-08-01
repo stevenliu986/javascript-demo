@@ -40,7 +40,7 @@ for (let i = 0; i < arr.length; i++) {
     // i--;
     // continue;
 
-    // 方案优化
+    // 方案优化：即将最后一位的数覆盖相同的数，然后数组长度减一（删去最后一位的数）
     arr[i] = arr[arr.length - 1];
     arr.length--;
     i--;
