@@ -72,7 +72,7 @@ function b(x, y, a) {
 }
 a = b(1, 2, 3);
 console.log(a);
-*/
+
 
 var foo = "hello";
 (function (foo) {
@@ -81,3 +81,17 @@ var foo = "hello";
   console.log(foo);
 })(foo);
 console.log(foo);
+*/
+
+var a = 1;
+function fn(a) {
+  /*
+    形参赋值：a = 1
+    变量提升：var a（无效）。function a...;声明无效，但是需要给a赋值为函数，即a = function...;
+  */
+  console.log(a);
+  var a = 2;
+  function a() {}
+  console.log(a);
+}
+fn(a);
