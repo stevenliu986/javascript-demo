@@ -83,15 +83,40 @@ var foo = "hello";
 console.log(foo);
 */
 
-var a = 1;
-function fn(a) {
-  /*
-    形参赋值：a = 1
-    变量提升：var a（无效）。function a...;声明无效，但是需要给a赋值为函数，即a = function...;
-  */
-  console.log(a);
-  var a = 2;
-  function a() {}
-  console.log(a);
+// var a = 1;
+// function fn(a) {
+//   /*
+//     形参赋值：a = 1
+//     变量提升：var a（无效）。function a...;声明无效，但是需要给a赋值为函数，即a = function...;
+//   */
+//   console.log(a);
+//   var a = 2;
+//   function a() {}
+//   console.log(a);
+// }
+// fn(a);
+
+var a = 0,
+  b = 0;
+function A(a) {
+  A = function b() {
+    alert(a + b++);
+  };
+  alert(a++);
 }
-fn(a);
+A(1);
+A(2);
+
+/**
+ * 变量提升：
+ *  a
+ *  b
+ *  A -> AF0 ("A = function b() {
+                            alert(a + b++);
+                          };
+                          alert(a++);"
+    代码执行：
+      a -> 0
+ *    b -> 0
+      A -> BF0
+ */
