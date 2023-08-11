@@ -73,3 +73,21 @@ C1.prototype.name = "Tom";
 C2.prototype.name = "Tom";
 C3.prototype.name = "Tom";
 alert(new C1().name + new C2().name + new C3().name); // "Tomundefinedjoin"
+
+// 第四题
+function Fn1(num) {
+  this.x = this.y = num;
+}
+
+Fn1.prototype = {
+  x: 20,
+  sum: function () {
+    console.log(this.x + this.y);
+  },
+};
+
+let f = new Fn1(10);
+console.log(f.sum === Fn1.prototype.sum); // true
+f.sum(); // 20
+Fn1.prototype.sum(); // NaN
+console.log(f.constructor); // Object，按照原型链查找，最终找到Object这个基类
