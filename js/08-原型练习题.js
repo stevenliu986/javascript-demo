@@ -136,3 +136,30 @@ console.log(f3.constructor == Fn2); // true
   Number.prototype.plus = plus;
   Number.prototype.minus = minus;
 })();
+
+// 第七题 阿里的面试题，此题与函数的三种角色有关
+function Foo() {
+  getName = function () {
+    console.log(1);
+    return this;
+  };
+}
+
+Foo.getName = function () {
+  console.log(2);
+};
+Foo.prototype.getName = function () {
+  console.log(3);
+};
+var getName = function () {
+  console.log(4);
+};
+
+function getName() {
+  console.log(5);
+}
+Foo.getName();
+getName();
+new Foo.getName();
+new Foo().getName();
+new new Foo().getName();
