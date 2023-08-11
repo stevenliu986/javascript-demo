@@ -54,3 +54,8 @@ Fun.prototype = {
   },
 };
 var my_fun = new Fun();
+my_fun.b();
+my_fun.c();
+
+// 第三题
+function C1(name) {}
