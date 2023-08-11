@@ -54,8 +54,22 @@ Fun.prototype = {
   },
 };
 var my_fun = new Fun();
-my_fun.b();
-my_fun.c();
+my_fun.b(); // 0
+my_fun.c(); // 30
 
 // 第三题
-function C1(name) {}
+function C1(name) {
+  if (name) {
+    this.name = name;
+  }
+}
+function C2(name) {
+  this.name = name;
+}
+function C3(name) {
+  this.name = name || "join";
+}
+C1.prototype.name = "Tom";
+C2.prototype.name = "Tom";
+C3.prototype.name = "Tom";
+alert(new C1().name + new C2().name + new C3().name);
