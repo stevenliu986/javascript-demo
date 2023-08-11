@@ -39,9 +39,11 @@ function Fun() {
 /* 批量给原型设置属性方法的时候：重构类的原型
     但这会带来一个问题：即重定向后的空间不一定有CONSTRUCTOR属性，这样会导致类和原型机制不完整，
     所以需要手动给新的原型空间设置CONSTRUCTOR属性。
+    还有一个问题就是：重定向前，要确保原有原型的堆内存中没有设置属性和方法，因为重定向后，
+    原有的属性和方法就会被替换掉，如需克隆到新的原型堆内存中，需要额外的处理。
 */
 Fun.prototype = {
-  constructor: Fun,
+  // constructor: Fun,
   b: function () {
     this.a = 20;
     alert(this.a);
