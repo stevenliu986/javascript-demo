@@ -91,3 +91,48 @@ console.log(f.sum === Fn1.prototype.sum); // true
 f.sum(); // 20
 Fn1.prototype.sum(); // NaN
 console.log(f.constructor); // Object，按照原型链查找，最终找到Object这个基类
+
+// 第五题
+function Fn2() {
+  let a = 1;
+  this.a = a;
+}
+Fn2.prototype.say = function () {
+  this.a = 2;
+};
+Fn2.prototype = new Fn2();
+let f3 = new Fn2();
+Fn2.prototype.b = function () {
+  this.a = 3;
+};
+
+console.log(f3.a); // 1
+console.log(f3.prototype); // undefined
+console.log(f3.b); // 这指向的是一个function
+console.log(f3.hasOwnProperty("b")); // false
+console.log("b" in f3); // true
+console.log(f3.constructor == Fn2); // true
+
+// 第六题：编写两个方法实现plus/minus的效果
+// let n = 10;
+// let m = n.plus(10).minus(5);
+// console.log(m); // 15, (10 + 10 - 5)
+
+~(function () {
+  // 检测传进来的实参是否是有效数字
+  function checkNumber(n) {
+    n = Number(n);
+    return isNaN(n) ? 0 : n;
+  }
+  function plus(n) {
+    n = checkNumber(n);
+    return this + n;
+  }
+  function minus() {
+    n = checkNumber(n);
+    return this - n;
+  }
+
+  Number.prototype.plus = plus;
+  Number.prototype.minus = minus;
+})();
