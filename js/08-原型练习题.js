@@ -1,0 +1,54 @@
+// 第一题
+function Fn() {
+  this.x = 100;
+  this.y = 200;
+  this.getX = function () {
+    console.log(this.x);
+  };
+}
+
+Fn.prototype.getX = function () {
+  console.log(this.x);
+};
+
+Fn.prototype.getY = function () {
+  console.log(this.y);
+};
+let f1 = new Fn();
+let f2 = new Fn();
+
+console.log(f1.getX === f2.getX); // false
+console.log(f1.getY === f2.getY); // true
+console.log(f1.__proto__.getY === Fn.prototype.getY); // true
+console.log(fl.__proto__.getX === f2.getX); // false
+console.log(fl.getX === Fn.prototype.getX); // false
+console.log(fl.constructor); // Fn
+console.log(Fn.prototype.__proto__.constructor); // Object
+f1.getX(); // 100
+f1.__proto__.getX(); // undefined
+f2.getY(); // 200
+Fn.prototype.getY(); // undefined
+
+// 第二题
+function Fun() {
+  this.a = 0;
+  this.b = function () {
+    alert(this.a);
+  };
+}
+/* 批量给原型设置属性方法的时候：重构类的原型
+    但这会带来一个问题：即重定向后的空间不一定有CONSTRUCTOR属性，这样会导致类和原型机制不完整，
+    所以需要手动给新的原型空间设置CONSTRUCTOR属性。
+*/
+Fun.prototype = {
+  constructor: Fun,
+  b: function () {
+    this.a = 20;
+    alert(this.a);
+  },
+  c: function () {
+    this.a = 30;
+    alert(this.a);
+  },
+};
+var my_fun = new Fun();
