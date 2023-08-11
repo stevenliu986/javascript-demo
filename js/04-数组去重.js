@@ -51,3 +51,26 @@ for (let i = 0; i < arr.length; i++) {
 
 console.log(arr);
 console.log(newObj); // {1：1， 2：2， 3：3}
+
+// 直接给Array内置类上扩展一个方法，这样所有Array的实例都可以调用这个方法
+~(function () {
+  function myUnique() {
+    let obj = {};
+    for (let i = 0; i < this.length; i++) {
+      if (typeof obj[this[i]] !== "undefined") {
+        this[i] = this[this.length - 1];
+        this.length--;
+        i--;
+        continue;
+      }
+      obj[this[i]] = this[i];
+    }
+    obj = null;
+    // 之所以要把数组返回是为了保证当前方法完成后返回的结果依然是Array的一个实例
+    return this;
+  }
+  Array.prototype.myUnique = myUnique;
+})();
+
+let arr1 = [11, 12, 34, 11, 23, 34, 1, 0, 12, 34];
+console.log(arr1.myUnique());
