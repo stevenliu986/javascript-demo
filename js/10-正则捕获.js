@@ -74,3 +74,10 @@ while (result) {
 }
 
 console.log(arrBig, arrSmall);
+
+// 分组引用：就是通过“\数字”的形式让其和对应分组出现一模一样的内容。例：([a-zA-Z])\1
+let str4 = "book";
+let reg4 = /^[a-zA-Z]([a-zA-Z])\1[a-zA-Z]$/;
+console.log(reg4.test("hook")); // true 传入的字符串长度必须是4。
+console.log(reg4.test("toot")); // true
+console.log(reg4.test("come")); // false
