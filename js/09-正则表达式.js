@@ -50,3 +50,15 @@ console.log(reg8.test("182")); // false
 let reg9 = /^[@+]+$/;
 console.log(reg9.test("@@")); // true
 console.log(reg9.test("@+")); // true
+
+// 中括号有例外情况，如[\d]，依然表示的是0-9数字
+let reg10 = /^[\d]$/;
+console.log(reg10.test("d")); // false
+console.log(reg10.test("\\")); // false
+console.log(reg10.test("9")); // true
+
+// 中括号中不存在多位数的情况
+let reg11 = /^[18]$/;
+console.log(reg11.test("1")); // true
+console.log(reg11.test("8")); // true
+console.log(reg11.test("18")); // false
