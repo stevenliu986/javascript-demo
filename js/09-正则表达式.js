@@ -62,3 +62,7 @@ let reg11 = /^[18]$/;
 console.log(reg11.test("1")); // true
 console.log(reg11.test("8")); // true
 console.log(reg11.test("18")); // false
+
+// 常用正则表达式
+// 1. 验证是否为有效数字
+let reg12 = /^\d$/;
