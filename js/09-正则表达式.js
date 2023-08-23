@@ -65,4 +65,5 @@ console.log(reg11.test("18")); // false
 
 // 常用正则表达式
 // 1. 验证是否为有效数字
-let reg12 = /^\d$/;
+let reg12 = /^\d+$/;
+console.log(reg12.test("1"));
