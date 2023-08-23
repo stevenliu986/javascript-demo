@@ -7,3 +7,10 @@ let reg2 = /^\d+$/;
 
 // 最简单的验证手机号的正则
 let reg3 = /^1\d{10}$/;
+
+// \: 转义字符
+// 这里的.并不是小数点，而是表示除\n以外的任意字符
+let reg4 = /^2.3$/;
+console.log(reg4.test("2.3")); // true
+console.log(reg4.test("2@3")); // true
+console.log(reg4.test("23")); // false
