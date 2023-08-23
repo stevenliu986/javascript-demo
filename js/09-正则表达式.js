@@ -37,11 +37,16 @@ console.log(reg7.test("829")); // true
 console.log(reg7.test("182")); // true
 
 // 如需仅匹配18或29，就需要使用括号将条件分组
-let reg8 = /^(18|29)$/;
+let reg8 = /^(18|29)$/; // 表示只能是18或29中的一个了
 console.log(reg8.test("29")); // true
 console.log(reg8.test("189")); // false
 console.log(reg8.test("129")); // false
-console.log(reg8.test("1829")); // true
+console.log(reg8.test("1829")); // false
 console.log(reg8.test("18")); // true
 console.log(reg8.test("829")); // false
 console.log(reg8.test("182")); // false
+
+// []: 中括号中出现的字符一般都代表本身的含义，中括号中的@+的+号不是出现1次或多次的意思，就是一个单纯的字符+，而中括号外的+就表示的是出现1次或多次的意思
+let reg9 = /^[@+]+$/;
+console.log(reg9.test("@@")); // true
+console.log(reg9.test("@+")); // true
