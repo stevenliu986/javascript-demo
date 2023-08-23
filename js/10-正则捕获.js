@@ -53,7 +53,24 @@ console.log(reg1.lastIndex); // 0
 
 // 分组捕获
 let str2 = "130808198008080523";
-let reg2 = /^(\d{6})(\d{4})(\d{2})(\d{2})(\d{2})(\d)(\d|X)$/;
+let reg2 = /^(\d{6})(\d{4})(\d{2})(\d{2})(\d{2})(\d)(?:\d|X)$/; // 最后一个小分组添加了?:表示只匹配不捕获。
 console.log(reg2.exec(str2));
 console.log(str2.match(reg2));
 // 返回结果：第一项是大正则匹配捕获的结果。其余项：每个小分组单独匹配捕获的结果
+
+// 需求：既要捕获{数字}，也要捕获到单独的数字。如：第一次找到{0}，还需要单独获取0
+let str3 = "{0}年{1}月{3}日";
+let reg3 = /\{(\d+)\}/g;
+console.log(str3.match(reg3)); // 返回的结果只捕获到了{0},{1},{3}。
+// 多次匹配的情况下，match只能把大正则匹配的内容获取到，小分组匹配的信息无法获取。
+let arrBig = [],
+  arrSmall = [],
+  result = reg3.exec(str3);
+while (result) {
+  let [big, small] = result;
+  arrBig.push(big);
+  arrSmall.push(small);
+  result = reg3.exec(str3);
+}
+
+console.log(arrBig, arrSmall);
