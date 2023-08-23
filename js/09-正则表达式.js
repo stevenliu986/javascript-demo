@@ -15,8 +15,33 @@ console.log(reg4.test("2.3")); // true
 console.log(reg4.test("2@3")); // true
 console.log(reg4.test("23")); // false
 
-// 如果需匹配2.3，就需要使用\转义字符
+// 如需匹配2.3，就要使用\转义字符
 let reg5 = /^2\.3$/;
 console.log(reg4.test("2.3")); // true
 console.log(reg4.test("2@3")); // false
 console.log(reg4.test("23")); // false
+
+let str1 = "\\d";
+
+let reg6 = /^\\d$/;
+console.log(reg6.test(str1)); // true
+
+// x|y: 直接使用会存在很乱的优先级的问题，一般会使用括号进行分组
+let reg7 = /^18|29$/;
+console.log(reg7.test("18")); // true
+console.log(reg7.test("29")); // true
+console.log(reg7.test("189")); // true
+console.log(reg7.test("129")); // true
+console.log(reg7.test("1829")); // true
+console.log(reg7.test("829")); // true
+console.log(reg7.test("182")); // true
+
+// 如需仅匹配18或29，就需要使用括号将条件分组
+let reg8 = /^(18|29)$/;
+console.log(reg8.test("29")); // true
+console.log(reg8.test("189")); // false
+console.log(reg8.test("129")); // false
+console.log(reg8.test("1829")); // true
+console.log(reg8.test("18")); // true
+console.log(reg8.test("829")); // false
+console.log(reg8.test("182")); // false
