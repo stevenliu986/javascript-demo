@@ -144,7 +144,32 @@ str7 = str7
   .join("");
 let reg7 = /([a-zA-Z])\1+/g;
 let arr = str7.match(reg7);
+console.log(arr);
 arr = arr.sort((a, b) => b.length - a.length);
 let max = arr[0].length,
-  res = arr[0].substring(0, 1);
-for (let i = 1; i < arr.length; i++) {}
+  res = [arr[0].substring(0, 1)];
+for (let i = 1; i < arr.length; i++) {
+  if (arr[i].length < max) {
+    break;
+  }
+  res.push(arr[i].substring(0, 1));
+}
+console.log(`出现最多的字符：${res}, 出现的次数：${max}`);
+
+(str7 = "bushiyigehaodexiguajiubuhuichenggong"), (max = 0), (res = []);
+let flag = false;
+str7 = str7
+  .split("")
+  .sort((a, b) => a.localeCompare(b))
+  .join("");
+for (let i = str7.length; i > 0; i--) {
+  let reg = new RegExp("([a-zA-Z])\\1{" + (i - 1) + "}", "g");
+  str7.replace(reg, (content, $1) => {
+    res.push($1);
+    max = i;
+    flag = true;
+  });
+  if (flag) break;
+}
+
+console.log(`出现最多的字符：${res}, 出现的次数：${max}`);
