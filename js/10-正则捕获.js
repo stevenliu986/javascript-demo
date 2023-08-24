@@ -135,3 +135,16 @@ sentence = sentence.replace(sentenceRegex, (...arg) => {
   content = content.substring(1);
   return $1 + content;
 });
+
+// 验证一个字符串中，哪个字母出现的次数最多及次数
+let str7 = "bushiyigehaodexiguajiubuhuichenggong";
+str7 = str7
+  .split("")
+  .sort((a, b) => a.localeCompare(b))
+  .join("");
+let reg7 = /([a-zA-Z])\1+/g;
+let arr = str7.match(reg7);
+arr = arr.sort((a, b) => b.length - a.length);
+let max = arr[0].length,
+  res = arr[0].substring(0, 1);
+for (let i = 1; i < arr.length; i++) {}
