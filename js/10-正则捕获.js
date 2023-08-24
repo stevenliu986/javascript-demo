@@ -107,3 +107,31 @@ str6 = str6.replace("hello", "helloworld").replace("hello", "helloworld");
 // str6的输出结果：'helloworldworld@2023|hello@2024'。结果并不是我们需要的，这时就需要使用正则来做替换
 str6 = "hello@2023|hello@2024";
 str6 = str6.replace(/hello/g, "helloworld"); // 'helloworld@2023|helloworld@2024'
+
+// 案例：时间字符串处理
+let time = "2023-08-24"; // 要处理成2023年08月24日
+let timeReg = /(\d{4})-(\d{1,2})-(\d{1,2})/;
+time = time.replace(timeReg, "$1年$2月$3日");
+
+// 上面的方法还做这样的处理，使替换更加的灵活，同时，我们还可以做一些自定义的事情
+time = "2023-8-4";
+
+// 在函数中返回的是什么，就会把当前大正则匹配的内容替换成什么
+time = time.replace(timeReg, (...arg) => {
+  // 使用解构赋值来获取正则捕获的信息（这里含有大正则及小分组的信息）
+  let [, $1, $2, $3] = arg; // 不需要大正则的信息，所以就将它隔过去
+  $2.length < 2 ? ($2 = "0" + $2) : null;
+  $3.length < 2 ? ($3 = "0" + $3) : null;
+  return $1 + "年" + $2 + "月" + $3 + "日";
+});
+
+// 单词首字母大写
+let sentence = "good good study, day day up";
+let sentenceRegex = /\b([a-zA-Z])[a-zA-Z]*\b/g;
+
+sentence = sentence.replace(sentenceRegex, (...arg) => {
+  let [content, $1] = arg;
+  $1 = $1.toUpperCase();
+  content = content.substring(1);
+  return $1 + content;
+});
