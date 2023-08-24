@@ -85,3 +85,25 @@ console.log(reg4.test("come")); // false
 // 正则捕获的贪婪性：默认情况下，正则捕获的时候，是按照当前正则所匹配的最长结果来获取的
 let str5 = "hello2023@2024world";
 let reg5 = /\d+/g;
+console.log(str5.match(reg5)); // ["2023", "2024"]
+
+// 在量词后面添加?来取消正则捕获的贪婪性
+reg5 = /\d+?/g;
+console.log(str5.match(reg5)); // ["2","0","2","3", "2","0","2","4"]
+
+let str6 = "hello@2023|hello@2024";
+// 把hello替换为你好
+// 1. 不使用正则，一次只能替换一个
+str6 = str6.replace("hello", "你好").replace("hello", "你好");
+console.log(str6);
+str6 = "hello@2023|hello@2024";
+// 2. 使用正则进行替换
+str6 = str6.replace(/hello/g, "你好");
+console.log(str6);
+
+// 3. 将hello替换为helloworld，如果使用字符串来做替换
+str6 = "hello@2023|hello@2024";
+str6 = str6.replace("hello", "helloworld").replace("hello", "helloworld");
+// str6的输出结果：'helloworldworld@2023|hello@2024'。结果并不是我们需要的，这时就需要使用正则来做替换
+str6 = "hello@2023|hello@2024";
+str6 = str6.replace(/hello/g, "helloworld"); // 'helloworld@2023|helloworld@2024'
