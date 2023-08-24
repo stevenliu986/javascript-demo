@@ -81,3 +81,7 @@ let reg4 = /^[a-zA-Z]([a-zA-Z])\1[a-zA-Z]$/;
 console.log(reg4.test("hook")); // true 传入的字符串长度必须是4。
 console.log(reg4.test("toot")); // true
 console.log(reg4.test("come")); // false
+
+// 正则捕获的贪婪性：默认情况下，正则捕获的时候，是按照当前正则所匹配的最长结果来获取的
+let str5 = "hello2023@2024world";
+let reg5 = /\d+/g;
