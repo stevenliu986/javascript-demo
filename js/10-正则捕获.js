@@ -173,3 +173,23 @@ for (let i = str7.length; i > 0; i--) {
 }
 
 console.log(`出现最多的字符：${res}, 出现的次数：${max}`);
+
+// 时间字符串格式化处理
+(function () {
+  /**
+   * @param {string}
+   */
+  function formatTime() {
+    // 获取time中的年月日等信息
+    let timeArr = time.match(/\d+/g);
+    let template = "{0}年{1}月{2}日 {3}时{4}分{5}秒";
+    template = template.replace(/\{(\d+)\}/g, () => {});
+  }
+  // 扩展到内置类String.prototype上
+  ["formatTime"].forEach((item) => {
+    String.prototype[item] = eval(item);
+  });
+})();
+
+let time1 = "2023-8-25 16:12:23";
+time1.formatTime();
