@@ -191,10 +191,10 @@ console.log(`出现最多的字符：${res}, 出现的次数：${max}`);
   }
 
   /**
-   * description: 用来获取地址栏中?号后面的参数
-   * @param {string} url
+   * description: 用来获取URL地址栏中?号后面的参数信息，包括hash值
+   * @return {object}: 把所有问号后面的参数信息以键值对的形式存储起来
    */
-  function queryURLParams(url) {
+  function queryURLParams() {
     console.log(url);
   }
   // 扩展到内置类String.prototype上
