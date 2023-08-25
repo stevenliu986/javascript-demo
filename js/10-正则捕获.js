@@ -177,6 +177,7 @@ console.log(`出现最多的字符：${res}, 出现的次数：${max}`);
 // 时间字符串格式化处理
 (function () {
   /**
+   * description: 用来处理时间格式
    * @param {string} template: 期望获取的日期格式的模板
    * @return {string}: 格式化后的时间字符串
    */
@@ -190,14 +191,14 @@ console.log(`出现最多的字符：${res}, 出现的次数：${max}`);
   }
 
   /**
-   *
+   * description: 用来获取地址栏中?号后面的参数
    * @param {string} url
    */
   function queryURLParams(url) {
     console.log(url);
   }
   // 扩展到内置类String.prototype上
-  ["formatTime"].forEach((item) => {
+  ["formatTime", "queryURLParams"].forEach((item) => {
     String.prototype[item] = eval(item);
   });
 })();
