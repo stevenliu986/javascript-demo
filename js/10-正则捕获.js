@@ -177,12 +177,13 @@ console.log(`出现最多的字符：${res}, 出现的次数：${max}`);
 // 时间字符串格式化处理
 (function () {
   /**
-   * @param {string}
+   * @param (string): 期望获取的日期格式的模板
+   * @return (string): 格式化后的时间字符串
    */
   function formatTime(template = "{0}年{1}月{2}日 {3}时{4}分{5}秒") {
     // 获取time中的年月日等信息
     let timeArr = time.match(/\d+/g);
-    return template.replace(/\{(\d+)\}/g, (content, $1) => {
+    return template.replace(/\{(\d+)\}/g, (...[, $1]) => {
       let time = timeArr[$1] || "00";
       return time.length < 2 ? "0" + time : null;
     });
