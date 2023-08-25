@@ -192,7 +192,7 @@ console.log(`出现最多的字符：${res}, 出现的次数：${max}`);
 
   /**
    * description: 用来获取URL地址栏中?号后面的参数信息，包括hash值
-   * @return {object}: 把所有问号后面的参数信息以键值对的形式存储起来
+   * @return {object}: 把所有问号后面的参数信息以键值对的形式存储起来并返回
    */
   function queryURLParams() {
     console.log(url);
@@ -205,3 +205,6 @@ console.log(`出现最多的字符：${res}, 出现的次数：${max}`);
 
 let time1 = "2023-8-25 16:12:23";
 console.log(time1.formatTime());
+
+// 经过处理后的格式：{lx:1, from:"wx", HASH: "video"}
+let url1 = "http://www.example.com/?lx=1&from=wx#video";
