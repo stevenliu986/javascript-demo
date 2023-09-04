@@ -195,10 +195,22 @@ console.log(`出现最多的字符：${res}, 出现的次数：${max}`);
    * @return {object}: 把所有问号后面的参数信息以键值对的形式存储起来并返回
    */
   function queryURLParams() {
-    console.log(url);
+    let obj = {};
+    this.replace(/([^?=&#]+)=([^?=&#]+)/g, (...[, $1, $2]) => (obj[$1] = $2));
+    this.replace(/#([^?=&#]+)/g, (...[, $1]) => (obj["HASH"] = $1));
+    return obj;
+  }
+
+  /**
+   * millimeter: 实现大数字的千分符处理
+   * @params: 无
+   * @return {string}: 加了千分符的字符串
+   */
+  function millimeter() {
+    this.replace(/\d{1,3}(?=(\d{3})+$)/g, (context) => context + ",");
   }
   // 扩展到内置类String.prototype上
-  ["formatTime", "queryURLParams"].forEach((item) => {
+  ["formatTime", "queryURLParams", "millimeter"].forEach((item) => {
     String.prototype[item] = eval(item);
   });
 })();
