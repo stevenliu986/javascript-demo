@@ -17,8 +17,8 @@ delete person[1];
 person.weight = null;
 
 let arr = [12, "John", 13];
-console.log(arr.length);
-console.log(arr[arr.length - 2]); //
+console.log(arr.length); // 3
+console.log(arr[arr.length - 2]); // "John"
 
 let n = [10, 20];
 let m = n;
